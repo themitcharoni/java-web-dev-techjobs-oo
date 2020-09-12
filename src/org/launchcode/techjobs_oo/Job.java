@@ -29,18 +29,9 @@ public class Job {
 
     @Override
     public String toString(){
-        ArrayList<Object> fields = new ArrayList<Object>();
-        fields.add(id);
-        fields.add(name);
-        fields.add(employer);
-        fields.add(location);
-        fields.add(positionType);
-        fields.add(coreCompetency);
-        for()
-
-        return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" + "Location: " + location + "\n" + "Position Type: " + positionType
-                + "\n" + "Core Competency: "+ coreCompetency + "\n";
+        return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" + "Employer: " + employer
+                + "\n" + "Location: " + location + "\n" + "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
     }
 
     public Job(){
@@ -57,6 +48,16 @@ public class Job {
         this.positionType = aPositionType;
         this.coreCompetency = aCoreCompetency;
 
+        ArrayList<Fields> fieldObjects = new ArrayList<>();
+        fieldObjects.add(employer);
+        fieldObjects.add(location);
+        fieldObjects.add(positionType);
+        fieldObjects.add(coreCompetency);
+        for(Fields fields : fieldObjects){
+            if(fields.getValue() == ""){
+                fields.setValue("Data not available");
+            }
+        }
     }
 
     /******* GETTERS AND SETTERS *******/
@@ -121,11 +122,13 @@ public class Job {
         /**FIGURE OUT THE LAST INDEX**/
         int lastIndex = aToString.length();
 
-        /**FIGURE OUT SECNOD TO LAST INDEX**/
+        /**FIGURE OUT SECOND TO LAST INDEX**/
         int secondToLastIndex = lastIndex -1;
         String lastSpace = aToString.substring(secondToLastIndex, lastIndex);
         Boolean answer = lastSpace.contains("\n");
         return answer;
     }
+
+
 
 }
