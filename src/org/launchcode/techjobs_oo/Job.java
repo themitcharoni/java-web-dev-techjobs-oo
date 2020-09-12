@@ -48,12 +48,12 @@ public class Job {
         this.positionType = aPositionType;
         this.coreCompetency = aCoreCompetency;
 
-        ArrayList<Fields> fieldObjects = new ArrayList<>();
+        ArrayList<JobField> fieldObjects = new ArrayList<>();
         fieldObjects.add(employer);
         fieldObjects.add(location);
         fieldObjects.add(positionType);
         fieldObjects.add(coreCompetency);
-        for(Fields fields : fieldObjects){
+        for(JobField fields : fieldObjects){
             if(fields.getValue() == ""){
                 fields.setValue("Data not available");
             }

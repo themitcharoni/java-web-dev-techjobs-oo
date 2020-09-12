@@ -11,6 +11,7 @@ public class JobTest {
     Job testJob2;
     Job testEmptyJob1;
     Job testEmptyJob2;
+    String testBlankField;
 
     @Before
     public void createTestJobs() {
@@ -23,13 +24,14 @@ public class JobTest {
         );
         testJob2 = new Job(
                 "Product tester",
-                new Employer("ACME"),
+                new Employer(""),
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence")
         );
         testEmptyJob1 = new Job();
         testEmptyJob2 = new Job();
+        testBlankField = testEmptyJob2.getEmployer().getValue();
 
     }
 
@@ -59,6 +61,11 @@ public class JobTest {
     @Test
     public void testToStringBlankLineAfter() {
         assertTrue(testJob.checkBlankLineAfter());
+    }
+
+    @Test
+    public void testEmptyField(){
+       assertTrue(testBlankField.contains("Data not available"));
     }
 }
 
