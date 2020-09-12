@@ -30,6 +30,7 @@ public class JobTest {
         );
         testEmptyJob1 = new Job();
         testEmptyJob2 = new Job();
+
     }
 
     @Test
@@ -52,8 +53,12 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringBlankLineBookends() {
-        
+    public void testToStringBlankLineBefore() {
+        assertTrue(testJob.checkBlankLineBefore());
+    }
+    @Test
+    public void testToStringBlankLineAfter() {
+        assertTrue(testJob.checkBlankLineAfter());
     }
 }
 

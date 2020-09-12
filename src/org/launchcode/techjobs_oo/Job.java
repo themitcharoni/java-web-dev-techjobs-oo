@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -28,8 +29,37 @@ public class Job {
 
     @Override
     public String toString(){
-        return "";
+        ArrayList<Object> fields = new ArrayList<Object>();
+        fields.add(id);
+        fields.add(name);
+        fields.add(employer);
+        fields.add(location);
+        fields.add(positionType);
+        fields.add(coreCompetency);
+        for()
+
+        return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" + "Location: " + location + "\n" + "Position Type: " + positionType
+                + "\n" + "Core Competency: "+ coreCompetency + "\n";
     }
+
+    public Job(){
+        id = nextId;
+        nextId++;
+    }
+
+    public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType,
+               CoreCompetency aCoreCompetency){
+        this();
+        this.name = aName;
+        this.employer = aEmployer;
+        this.location = aLocation;
+        this.positionType = aPositionType;
+        this.coreCompetency = aCoreCompetency;
+
+    }
+
+    /******* GETTERS AND SETTERS *******/
 
     public String getName() {
         return name;
@@ -75,20 +105,27 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public Job(){
-        id = nextId;
-        nextId++;
+    /******* METHODS I NEED *******/
+
+    public Boolean checkBlankLineBefore(){
+        String aToString = this.toString();
+        String firstSpace = aToString.substring(0,1);
+        Boolean answer = firstSpace.contains("\n");
+
+        return answer;
     }
 
-    public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType,
-               CoreCompetency aCoreCompetency){
-        this();
-        this.name = aName;
-        this.employer = aEmployer;
-        this.location = aLocation;
-        this.positionType = aPositionType;
-        this.coreCompetency = aCoreCompetency;
+    public Boolean checkBlankLineAfter(){
+        String aToString = this.toString();
 
+        /**FIGURE OUT THE LAST INDEX**/
+        int lastIndex = aToString.length();
+
+        /**FIGURE OUT SECNOD TO LAST INDEX**/
+        int secondToLastIndex = lastIndex -1;
+        String lastSpace = aToString.substring(secondToLastIndex, lastIndex);
+        Boolean answer = lastSpace.contains("\n");
+        return answer;
     }
 
 }
