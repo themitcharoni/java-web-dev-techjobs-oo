@@ -5,20 +5,24 @@ import java.util.Objects;
 
 public class Job {
 
+    /** UNIQUE ID FIELDS **/
     private int id;
     private static int nextId = 1;
 
+    /** JOB FIELDS **/
     private String name;
     private Employer employer;
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
+    /** JOB ID ASSIGNMENT CONSTRUCTOR **/
     public Job(){
         id = nextId;
         nextId++;
     }
 
+    /** CONSTRUCTOR **/
     public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType,
                CoreCompetency aCoreCompetency){
         this();
@@ -27,17 +31,6 @@ public class Job {
         this.location = aLocation;
         this.positionType = aPositionType;
         this.coreCompetency = aCoreCompetency;
-
-//        ArrayList<JobField> fieldObjects = new ArrayList<>();
-//        fieldObjects.add(employer);
-//        fieldObjects.add(location);
-//        fieldObjects.add(positionType);
-//        fieldObjects.add(coreCompetency);
-//        for(JobField fields : fieldObjects){
-//            if(fields.getValue() == ""){
-//                fields.setValue("Data not available");
-//            }
-//        }
     }
 
     @Override
@@ -56,13 +49,14 @@ public class Job {
     @Override
     public String toString(){
 
+        /** CREATE ARRAY LIST FOR CHECKING BLANK FIELDS **/
         ArrayList<String> fieldObjects = new ArrayList<>();
         fieldObjects.add(employer.toString());
         fieldObjects.add(location.toString());
         fieldObjects.add(positionType.toString());
         fieldObjects.add(coreCompetency.toString());
 
-
+        /** SET BLANK FIELD TO "DATA NOT AVAILABLE **/
         for(int i = 0; i < fieldObjects.size(); i++){
             if(fieldObjects.get(i).isBlank()){
                 fieldObjects.set(i, "Data not available");
@@ -70,7 +64,7 @@ public class Job {
         }
 
 
-
+        /** RETURN STRING THAT HAS FIELDS CALLED FROM ARRAY LIST **/
         return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" + "Employer: " + fieldObjects.get(0)
                 + "\n" + "Location: " + fieldObjects.get(1) + "\n" + "Position Type: " + fieldObjects.get(2) + "\n" +
                 "Core Competency: " + fieldObjects.get(3) + "\n";
@@ -122,9 +116,9 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    /******* METHODS I NEED *******/
+    /******* METHODS I THOUGHT I NEEDED *******/
 
-    public Boolean checkBlankLineBefore(){
+/*    public Boolean checkBlankLineBefore(){
         String aToString = this.toString();
         String firstSpace = aToString.substring(0,1);
         Boolean answer = firstSpace.contains("\n");
@@ -135,15 +129,15 @@ public class Job {
     public Boolean checkBlankLineAfter(){
         String aToString = this.toString();
 
-        /**FIGURE OUT THE LAST INDEX**/
+        *//**FIGURE OUT THE LAST INDEX**//*
         int lastIndex = aToString.length();
 
-        /**FIGURE OUT SECOND TO LAST INDEX**/
+        *//**FIGURE OUT SECOND TO LAST INDEX**//*
         int secondToLastIndex = lastIndex -1;
         String lastSpace = aToString.substring(secondToLastIndex, lastIndex);
         Boolean answer = lastSpace.contains("\n");
         return answer;
-    }
+    }*/
 
 
 
