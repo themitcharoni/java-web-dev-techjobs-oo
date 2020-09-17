@@ -14,6 +14,32 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
+    public Job(){
+        id = nextId;
+        nextId++;
+    }
+
+    public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType,
+               CoreCompetency aCoreCompetency){
+        this();
+        this.name = aName;
+        this.employer = aEmployer;
+        this.location = aLocation;
+        this.positionType = aPositionType;
+        this.coreCompetency = aCoreCompetency;
+
+//        ArrayList<JobField> fieldObjects = new ArrayList<>();
+//        fieldObjects.add(employer);
+//        fieldObjects.add(location);
+//        fieldObjects.add(positionType);
+//        fieldObjects.add(coreCompetency);
+//        for(JobField fields : fieldObjects){
+//            if(fields.getValue() == ""){
+//                fields.setValue("Data not available");
+//            }
+//        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -29,35 +55,25 @@ public class Job {
 
     @Override
     public String toString(){
-        return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" + "Employer: " + employer
-                + "\n" + "Location: " + location + "\n" + "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n";
-    }
 
-    public Job(){
-        id = nextId;
-        nextId++;
-    }
+        ArrayList<String> fieldObjects = new ArrayList<>();
+        fieldObjects.add(employer.toString());
+        fieldObjects.add(location.toString());
+        fieldObjects.add(positionType.toString());
+        fieldObjects.add(coreCompetency.toString());
 
-    public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType,
-               CoreCompetency aCoreCompetency){
-        this();
-        this.name = aName;
-        this.employer = aEmployer;
-        this.location = aLocation;
-        this.positionType = aPositionType;
-        this.coreCompetency = aCoreCompetency;
 
-        ArrayList<JobField> fieldObjects = new ArrayList<>();
-        fieldObjects.add(employer);
-        fieldObjects.add(location);
-        fieldObjects.add(positionType);
-        fieldObjects.add(coreCompetency);
-        for(JobField fields : fieldObjects){
-            if(fields.getValue() == ""){
-                fields.setValue("Data not available");
+        for(int i = 0; i < fieldObjects.size(); i++){
+            if(fieldObjects.get(i).isBlank()){
+                fieldObjects.set(i, "Data not available");
             }
         }
+
+
+
+        return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" + "Employer: " + fieldObjects.get(0)
+                + "\n" + "Location: " + fieldObjects.get(1) + "\n" + "Position Type: " + fieldObjects.get(2) + "\n" +
+                "Core Competency: " + fieldObjects.get(3) + "\n";
     }
 
     /******* GETTERS AND SETTERS *******/

@@ -11,7 +11,7 @@ public class JobTest {
     Job testJob2;
     Job testEmptyJob1;
     Job testEmptyJob2;
-    String testBlankField;
+
 
     @Before
     public void createTestJobs() {
@@ -31,7 +31,7 @@ public class JobTest {
         );
         testEmptyJob1 = new Job();
         testEmptyJob2 = new Job();
-        testBlankField = testEmptyJob2.getEmployer().getValue();
+//        testBlankField = testEmptyJob2.getEmployer().toString();
 
     }
 
@@ -58,14 +58,18 @@ public class JobTest {
     public void testToStringBlankLineBefore() {
         assertTrue(testJob.checkBlankLineBefore());
     }
+
     @Test
     public void testToStringBlankLineAfter() {
         assertTrue(testJob.checkBlankLineAfter());
     }
 
+    //Create a test to check for blank at beginning and end
     @Test
-    public void testEmptyField(){
-       assertTrue(testBlankField.contains("Data not available"));
+    public void testToStringStartsAndEndsWithBlankLine() {
+        assertTrue(testJob.toString().substring(0, 1).isBlank());
+        assertTrue(testJob.toString().substring(testJob.toString().length()).isBlank());
     }
 }
+
 

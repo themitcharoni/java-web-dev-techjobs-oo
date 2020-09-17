@@ -42,7 +42,6 @@ public abstract class JobField {
 
     /**GETTERS AND SETTERS**/
     public void setValue(String value) {
-        this.value = value;
     }
 
     public int getId() {
