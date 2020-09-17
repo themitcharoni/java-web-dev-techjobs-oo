@@ -54,15 +54,6 @@ public class JobTest {
         assertFalse(testJob.equals(testJob2));
     }
 
-    @Test
-    public void testToStringBlankLineBefore() {
-        assertTrue(testJob.checkBlankLineBefore());
-    }
-
-    @Test
-    public void testToStringBlankLineAfter() {
-        assertTrue(testJob.checkBlankLineAfter());
-    }
 
     //Create a test to check for blank at beginning and end
     @Test
